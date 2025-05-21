@@ -32,10 +32,6 @@ A secure and modern web-based point-of-sale (POS) application with an intuitive 
 - ✅ **Animations**: Smooth transitions for all interactions
 - ✅ **IDR Currency**: Uses Indonesian Rupiah (IDR) as the default currency
 
-## Screenshots
-
-*Insert screenshots here*
-
 ## Technologies
 
 - **HTML5**: Modern semantic markup
@@ -60,7 +56,7 @@ This application includes several security measures:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/cashier-app.git
+   git clone https://github.com/annisacode/cashier-app.git
    ```
 
 2. Navigate to the project directory:
@@ -116,4 +112,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-© 2023 AnnisaCode. All Rights Reserved. 
+© 2025 AnnisaCode. All Rights Reserved. 
