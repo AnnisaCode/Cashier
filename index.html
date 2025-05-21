@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://code.jquery.com https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com; style-src 'self' https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com 'unsafe-inline'; font-src https://cdnjs.cloudflare.com; img-src 'self' data:;">
+    <meta name="description" content="A secure and modern cashier application for managing sales transactions">
     <title>Cashier App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Cashier App</a>
+        <a class="navbar-brand" href="#"><i class="fas fa-cash-register me-2"></i> Cashier App</a>
         <div class="custom-control ml-auto">
             <label class="switch">
                 <input type="checkbox" id="toggleMode">
@@ -21,34 +25,39 @@
     </nav>
     <div class="container mt-5">
         <div class="card card-custom">
-            <h2 class="text-center">Add Product</h2>
+            <h2 class="text-center"><i class="fas fa-plus-circle me-2"></i> Add Product</h2>
             <form id="productForm">
                 <div class="form-group">
-                    <label for="productName">Product Name</label>
-                    <input type="text" class="form-control" id="productName" required>
+                    <label for="productName"><i class="fas fa-tag me-2"></i> Product Name</label>
+                    <input type="text" class="form-control" id="productName" required placeholder="Enter product name"
+                        maxlength="100" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <label for="productPrice">Product Price</label>
-                    <input type="number" class="form-control" id="productPrice" required>
+                    <label for="productPrice"><i class="fas fa-dollar-sign me-2"></i> Product Price</label>
+                    <input type="number" class="form-control" id="productPrice" required
+                        placeholder="Enter product price" min="0" step="1000" autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Add Product</button>
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-plus me-2"></i> Add
+                    Product</button>
             </form>
         </div>
-        <h2 class="mt-4 text-center">Product List</h2>
+        <h2 class="mt-4 text-center"><i class="fas fa-clipboard-list me-2"></i> Product List</h2>
         <table class="table table-striped" id="productTable">
             <thead class="thead-dark">
                 <tr>
-                    <th>Product Name</th>
-                    <th>Product Price</th>
-                    <th>Action</th>
+                    <th><i class="fas fa-tag me-2"></i> Product Name</th>
+                    <th><i class="fas fa-dollar-sign me-2"></i> Product Price</th>
+                    <th><i class="fas fa-cogs me-2"></i> Action</th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
         <div class="payment-section">
-            <button class="btn btn-success" id="calculateChange">Pay</button>
-            <h3 class="bold text-right">Total: <span id="totalAmount">0</span></h3>
+            <button class="btn btn-success" id="calculateChange"><i class="fas fa-money-bill-wave me-2"></i>
+                Pay</button>
+            <h3 class="bold text-right"><i class="fas fa-file-invoice-dollar me-2"></i> Total: <span
+                    id="totalAmount">0</span></h3>
         </div>
     </div>
 
@@ -57,27 +66,36 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="changeModalLabel">Payment</h5>
+                    <h5 class="modal-title" id="changeModalLabel"><i class="fas fa-credit-card me-2"></i> Payment</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Total Price: <span id="modalTotalPrice">0</span></p>
-                    <div class="form-group">
-                        <label for="modalCustomerMoney">Customer Money</label>
-                        <input type="number" class="form-control" id="modalCustomerMoney" required>
-                    </div>
-                    <p><span class="bold">Change:</span> <span id="modalChangeAmount" class="bold text-right">0</span>
+                    <p><i class="fas fa-file-invoice-dollar me-2"></i> Total Price: <span id="modalTotalPrice">0</span>
                     </p>
+                    <div class="form-group">
+                        <label for="modalCustomerMoney"><i class="fas fa-hand-holding-usd me-2"></i> Customer
+                            Money</label>
+                        <input type="number" class="form-control" id="modalCustomerMoney" required
+                            placeholder="Enter amount" min="0" step="1000" autocomplete="off">
+                    </div>
+                    <p><span class="bold"><i class="fas fa-exchange-alt me-2"></i> Change:</span> <span
+                            id="modalChangeAmount" class="bold text-right">0</span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="confirmPayment">Confirm Payment</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="confirmPayment"><i
+                            class="fas fa-check-circle me-2"></i> Confirm Payment</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                            class="fas fa-times-circle me-2"></i> Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class="bg-light text-center text-muted p-3 mt-5">
+        <p class="mb-0">&copy; 2025 AnnisaCode</p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
