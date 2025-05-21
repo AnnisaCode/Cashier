@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let totalPrice = 0;
 
     function formatCurrency(value) {
-        return new Intl.NumberFormat('id-ID', {
+        return new Intl.NumberFormat('en-US', {
             style: 'currency',
-            currency: 'IDR',
+            currency: 'USD',
             minimumFractionDigits: 2
         }).format(value);
     }
@@ -46,22 +46,22 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         const productName = document.getElementById('productName').value;
         const productPrice = parseFloat(document.getElementById('productPrice').value);
-    
+
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${productName}</td>
             <td data-price="${productPrice}">${formatCurrency(productPrice)}</td>
-            <td><button class="btn btn-danger btn-sm delete-btn">Hapus</button></td>
+            <td><button class="btn btn-danger btn-sm delete-btn">Delete</button></td>
         `;
         productTableBody.appendChild(row);
-    
+
         totalPrice += productPrice;
-    
+
         totalAmountSpan.textContent = formatCurrency(totalPrice);
-    
+
         productForm.reset();
     });
-    
+
     productTableBody.addEventListener('click', function (e) {
         if (e.target.classList.contains('delete-btn')) {
             const row = e.target.closest('tr');
